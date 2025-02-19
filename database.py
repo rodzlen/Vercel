@@ -11,7 +11,7 @@ if not os.path.exists(DB_DIR):
 
 DATABASE_URL = "postgresql://neondb_owner:npg_PUuf6pzcO8Wr@ep-curly-morning-a8vitdnh-pooler.eastus2.azure.neon.tech/neondb?sslmode=require"
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(DATABASE_URL,connect_args={"check_same_thread":False})
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
