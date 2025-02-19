@@ -5,7 +5,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 DATABASE_URL = os.getenv("DATABASE_URL","postgresql://neondb_owner:npg_PUuf6pzcO8Wr@ep-curly-morning-a8vitdnh-pooler.eastus2.azure.neon.tech/neondb?sslmode=require")
 
-engine = create_engine(DATABASE_URL,connect_args={"check_same_thread":False})
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
