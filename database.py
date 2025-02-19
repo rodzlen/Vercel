@@ -1,15 +1,10 @@
-import os.path
+import os
 
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 
-
-DB_DIR = "./data"
-if not os.path.exists(DB_DIR):
-    os.makedirs(DB_DIR)
-
-DATABASE_URL = "postgresql://neondb_owner:npg_PUuf6pzcO8Wr@ep-curly-morning-a8vitdnh-pooler.eastus2.azure.neon.tech/neondb?sslmode=require"
+DATABASE_URL = os.getenv("postgresql://neondb_owner:npg_PUuf6pzcO8Wr@ep-curly-morning-a8vitdnh-pooler.eastus2.azure.neon.tech/neondb?sslmode=require")
 
 engine = create_engine(DATABASE_URL,connect_args={"check_same_thread":False})
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
